@@ -1,0 +1,20 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.springframework.security: info
+
+app:
+  jwt:
+    issuer: ${JWT_ISSUER:my-app}
+    access-ttl-minutes: ${JWT_ACCESS_TTL_MINUTES:15}
+    refresh-ttl-days: ${JWT_REFRESH_TTL_DAYS:30}
+    secret: ${JWT_SECRET:dev-secret-change-me}
