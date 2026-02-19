@@ -20,7 +20,7 @@ databaseChangeLog:
                     unique: true
               - column:
                   name: password_hash
-                  type: varchar(100)
+                  type: varchar(255)
                   constraints:
                     nullable: false
               - column:

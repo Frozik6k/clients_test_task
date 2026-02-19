@@ -7,9 +7,7 @@ import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 @SpringBootApplication
 @ConfigurationPropertiesScan
 public class ClientsApplication {
-
 	public static void main(String[] args) {
-		SpringApplication.run(ClientsApplication.class, args);
+        SpringApplication.run(ClientsApplication.class, args);
 	}
-
 }

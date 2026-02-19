@@ -13,7 +13,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Entity
 @Table(name = "refresh_tokens")
-public class RefreshTokens {
+public class RefreshToken {
 
     @Id
     @Column(name = "id", nullable = false, updatable = false)
