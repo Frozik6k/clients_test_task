@@ -1,0 +1,57 @@
+databaseChangeLog:
+  - changeSet:
+      id: 002-1-create-client
+      author: frozik6k
+      changes:
+        - createTable:
+            tableName: client
+            columns:
+              - column:
+                  name: client_id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(64)
+              - column:
+                  name: last_name
+                  type: varchar(64)
+  - changeSet:
+      id: 002-2-create-contact
+      author: frozik6k
+      changes:
+        - createTable:
+            tableName: contact
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: phone
+                  type: varchar(16)
+              - column:
+                  name: email
+                  type: varchar(64)
+              - column:
+                  name: client_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: contact
+            baseColumnNames: client_id
+            referencedTableName: client
+            referencedColumnNames: client_id
+            constraintName: fk_contact_client
+            onDelete: CASCADE
+        - createIndex:
+            tableName: contact
+            indexName: ix_contact_client_id
+            columns:
+              - column:
+                  name: client_id

@@ -1,3 +1,5 @@
 databaseChangeLog:
   - include:
       file: db/changelog/001-security-tables.yaml
+  - include:
+      file: db/changelog/002-client-contact-tables.yaml
