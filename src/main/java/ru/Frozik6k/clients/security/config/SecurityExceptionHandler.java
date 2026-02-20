@@ -10,7 +10,7 @@ import ru.Frozik6k.clients.security.exception.*;
 
 import java.time.Instant;
 
-@RestControllerAdvice(basePackages = "ru.Frozik6k.clients.controller")
+@RestControllerAdvice
 public class SecurityExceptionHandler {
 
     @ExceptionHandler(UsernameAlreadyExistsException.class)

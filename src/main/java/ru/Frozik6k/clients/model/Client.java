@@ -25,7 +25,7 @@ public class Client {
 
     @OneToMany(
             mappedBy = "client",
-            fetch = FetchType.LAZY,
+            fetch = FetchType.EAGER,
             cascade = CascadeType.ALL,
             orphanRemoval = true)
     private List<Contact> contacts;
