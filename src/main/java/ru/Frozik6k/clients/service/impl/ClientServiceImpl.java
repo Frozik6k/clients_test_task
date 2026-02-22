@@ -1,6 +1,7 @@
 package ru.Frozik6k.clients.service.impl;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import ru.Frozik6k.clients.dto.ClientRequest;
 import ru.Frozik6k.clients.dto.ClientResponse;
@@ -30,6 +31,7 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public ClientResponse updateClient(ClientRequest clientRequest) {
         Client client = clientMapper.toClient(clientRequest);
+        if (client.getClientId() == null || !clientRepository.existsById(client.getClientId())) throw new ClientNotFoundException();
         return clientMapper.toClientDto(
                 clientRepository.save(client));
     }

@@ -43,7 +43,11 @@ public class ContactServiceImpl implements ContactService {
 
     @Override
     public ContactDto updateContact(ContactDto contactDto) {
-        Contact saved = contactRepository.save(contactMapper.toContact(contactDto));
+        if (contactDto.id() == null) throw new ContactNotFoundException();
+        Contact contact = contactRepository.findById(contactDto.id()).orElseThrow(ContactNotFoundException::new);
+        contact.setPhone(contactDto.phone());
+        contact.setEmail(contactDto.email());
+        Contact saved = contactRepository.save(contact);
         return contactMapper.toContactDto(saved);
     }
 

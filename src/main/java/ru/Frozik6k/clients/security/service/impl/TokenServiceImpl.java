@@ -64,7 +64,7 @@ public class TokenServiceImpl implements TokenService {
         String hash = TokenHash.sha256Hex(refresh);
 
         Instant now = Instant.now();
-        Instant exp = now.plus(jwtProperties.refreshTtlDays(), ChronoUnit.MINUTES);
+        Instant exp = now.plus(jwtProperties.refreshTtlDays(), ChronoUnit.DAYS);
 
         refreshTokenRepository.revokeAllActiveByUserId(userId, exp);
 

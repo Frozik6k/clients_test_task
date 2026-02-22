@@ -28,6 +28,7 @@ public class JwtAuthConverterConfig {
             if (roles instanceof List<?> list) {
                 return list.stream()
                         .map(String::valueOf)
+                        .map(r -> r.startsWith("ROLE_") ? r : "ROLE_" + r)
                         .map(SimpleGrantedAuthority::new)
                         .collect(Collectors.toSet());
             }

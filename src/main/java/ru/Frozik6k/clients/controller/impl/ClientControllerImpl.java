@@ -1,6 +1,8 @@
 package ru.Frozik6k.clients.controller.impl;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import ru.Frozik6k.clients.controller.ClientController;
 import ru.Frozik6k.clients.dto.ClientRequest;
@@ -18,14 +20,14 @@ public class ClientControllerImpl implements ClientController {
     private final ClientService clientService;
 
     @Override
-    @PostMapping("/create")
-    public ClientResponse createClient(@RequestBody ClientRequest clientRequest) {
+    @PostMapping
+    public ClientResponse createClient(@RequestBody @Valid ClientRequest clientRequest) {
         return clientService.createClient(clientRequest);
     }
 
     @Override
-    @PutMapping("/update")
-    public ClientResponse updateClient(ClientRequest clientRequest) {
+    @PutMapping
+    public ClientResponse updateClient(@RequestBody @Valid ClientRequest clientRequest) {
         return clientService.updateClient(clientRequest);
     }
 

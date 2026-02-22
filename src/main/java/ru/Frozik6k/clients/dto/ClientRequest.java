@@ -1,13 +1,13 @@
 package ru.Frozik6k.clients.dto;
 
-import ru.Frozik6k.clients.model.Contact;
+import ru.Frozik6k.clients.valid.AtLeastOneNotBlank;
 
-import java.util.List;
 import java.util.UUID;
 
+@AtLeastOneNotBlank
 public record ClientRequest(
-       UUID clientId,
-       String name,
-       String lastName
+        UUID clientId,
+        String name,
+        String lastName
 ) {
 }

@@ -47,6 +47,14 @@ public interface ContactController {
                                     schema = @Schema(implementation = ContactDto.class)
                             )
                     }
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Контакт не найден",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ErrorResponse.class)
+                    )
             )
     })
     ContactDto updateContact(ContactDto contactDto);
@@ -71,6 +79,14 @@ public interface ContactController {
                                     schema = @Schema(implementation = ContactDto.class)
                             )
                     }
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Контакт не найден",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ErrorResponse.class)
+                    )
             )
     })
     ContactDto getContact(UUID id);
