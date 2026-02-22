@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.Frozik6k.clients.controller.AuthController;
 import ru.Frozik6k.clients.dto.auth.*;
-import ru.Frozik6k.clients.security.service.TokenService;
 import ru.Frozik6k.clients.service.AuthService;
 
 @RestController
@@ -15,7 +14,6 @@ import ru.Frozik6k.clients.service.AuthService;
 @RequiredArgsConstructor
 public class AuthControllerImpl implements AuthController {
 
-    private final TokenService tokenService;
     private final AuthService authService;
 
     @Override

@@ -28,6 +28,7 @@ public class AuthServiceImpl implements AuthService {
     public TokenResponse login(LoginRequest loginRequest) {
         User user = userRepository.findByUsername(loginRequest.username())
                 .orElseThrow(UserNotFoundException::new);
+        if (!user.isEnabled()) throw new UserDisabledException();
         if (!passwordEncoder.matches(loginRequest.password(), user.getPasswordHash()))
             throw new InvalidCredentialsException();
 
